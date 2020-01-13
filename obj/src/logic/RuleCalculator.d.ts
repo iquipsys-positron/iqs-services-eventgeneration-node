@@ -1,0 +1,36 @@
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { EventGenerationV1 } from '../data/version1/EventGenerationV1';
+import { EventGenerationStateV1 } from '../data/version1/EventGenerationStateV1';
+import { OrganizationData } from './OrganizationData';
+import { ExternalDependencies } from './ExternalDependencies';
+export declare class RuleCalculator implements IConfigurable {
+    private _dependencies;
+    setDependencies(dependencies: ExternalDependencies): void;
+    configure(config: ConfigParams): void;
+    private contains;
+    private checkObjectMatch;
+    private checkZoneMatch;
+    private checkEntryRule;
+    private checkExitRule;
+    private checkPressedRule;
+    private checkLongPressedRule;
+    private checkPowerOnRule;
+    private checkPowerOffRule;
+    private checkMinSpeedRule;
+    private checkMaxSpeedRule;
+    private checkFreezeRule;
+    private checkImmobilityRule;
+    private checkPresenceRule;
+    private checkShowUpRule;
+    private checkDisappearRule;
+    private checkRuleConditions;
+    private getActiveRules;
+    private getZoneId;
+    private getExpectedValue;
+    private getActualValue;
+    private getValueUnits;
+    calculateActivations(state: EventGenerationStateV1, organizationData: OrganizationData): EventGenerationV1[];
+    private checkEventGeneration;
+    generateEvents(correlationId: string, state: EventGenerationStateV1, organizationData: OrganizationData, callback: (err: any, generations: EventGenerationV1[]) => void): void;
+}

@@ -1,0 +1,35 @@
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { ICommandable } from 'pip-services3-commons-node';
+import { CommandSet } from 'pip-services3-commons-node';
+import { IOpenable } from 'pip-services3-commons-node';
+import { EventGenerationStateV1 } from '../data/version1/EventGenerationStateV1';
+import { EventGenerationV1 } from '../data/version1/EventGenerationV1';
+import { IEventGenerationController } from './IEventGenerationController';
+export declare class EventGenerationController implements IConfigurable, IReferenceable, ICommandable, IOpenable, IEventGenerationController {
+    private _logger;
+    private _dependencyResolver;
+    private _dependencies;
+    private _commandSet;
+    private _dumpCacheTimer;
+    private _dumpCacheInterval;
+    private _dataManager;
+    private _ruleCalculator;
+    private _eventRecorder;
+    private _statisticsRecorder;
+    private _signalSender;
+    private _messageSender;
+    configure(config: ConfigParams): void;
+    setReferences(references: IReferences): void;
+    getCommandSet(): CommandSet;
+    isOpen(): boolean;
+    open(correlationId: string, callback: (err: any) => void): void;
+    close(correlationId: string, callback: (err: any) => void): void;
+    private fixState;
+    generateEventsForStates(correlationId: string, states: EventGenerationStateV1[], callback?: (err: any, generations: EventGenerationV1[]) => void): void;
+    private handleAsyncCallback;
+    generateEventsForState(correlationId: string, state: EventGenerationStateV1, callback?: (err: any, generations: EventGenerationV1[]) => void): void;
+    private dumpCache;
+}
